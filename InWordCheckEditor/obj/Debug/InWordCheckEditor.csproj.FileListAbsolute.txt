@@ -1,0 +1,15 @@
+D:\git_repo\InWordCheckEditor\InWordCheckEditor\bin\Debug\InWordCheckEditor.exe.config
+D:\git_repo\InWordCheckEditor\InWordCheckEditor\bin\Debug\InWordCheckEditor.exe
+D:\git_repo\InWordCheckEditor\InWordCheckEditor\bin\Debug\InWordCheckEditor.pdb
+D:\git_repo\InWordCheckEditor\InWordCheckEditor\obj\Debug\InWordCheckEditor.csprojAssemblyReference.cache
+D:\git_repo\InWordCheckEditor\InWordCheckEditor\obj\Debug\InWordCheckEditor.Properties.Resources.resources
+D:\git_repo\InWordCheckEditor\InWordCheckEditor\obj\Debug\InWordCheckEditor.csproj.GenerateResource.cache
+D:\git_repo\InWordCheckEditor\InWordCheckEditor\obj\Debug\InWordCheckEditor.exe
+D:\git_repo\InWordCheckEditor\InWordCheckEditor\obj\Debug\InWordCheckEditor.pdb
+D:\git_repo\InWordCheckEditor\InWordCheckEditor\bin\Debug\EPPlus.dll
+D:\git_repo\InWordCheckEditor\InWordCheckEditor\bin\Debug\HtmlAgilityPack.dll
+D:\git_repo\InWordCheckEditor\InWordCheckEditor\bin\Debug\EPPlus.xml
+D:\git_repo\InWordCheckEditor\InWordCheckEditor\bin\Debug\HtmlAgilityPack.pdb
+D:\git_repo\InWordCheckEditor\InWordCheckEditor\bin\Debug\HtmlAgilityPack.xml
+D:\git_repo\InWordCheckEditor\InWordCheckEditor\obj\Debug\InWordCheckEditor.csproj.CopyComplete
+D:\git_repo\InWordCheckEditor\InWordCheckEditor\obj\Debug\InWordCheckEditor.Editor.resources

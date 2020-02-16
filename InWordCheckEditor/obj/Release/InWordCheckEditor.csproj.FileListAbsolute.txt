@@ -1,0 +1,15 @@
+D:\git_repo\InWordCheckEditor\InWordCheckEditor\bin\Release\InWordCheckEditor.exe.config
+D:\git_repo\InWordCheckEditor\InWordCheckEditor\bin\Release\InWordCheckEditor.exe
+D:\git_repo\InWordCheckEditor\InWordCheckEditor\bin\Release\InWordCheckEditor.pdb
+D:\git_repo\InWordCheckEditor\InWordCheckEditor\bin\Release\EPPlus.dll
+D:\git_repo\InWordCheckEditor\InWordCheckEditor\bin\Release\HtmlAgilityPack.dll
+D:\git_repo\InWordCheckEditor\InWordCheckEditor\bin\Release\EPPlus.xml
+D:\git_repo\InWordCheckEditor\InWordCheckEditor\bin\Release\HtmlAgilityPack.pdb
+D:\git_repo\InWordCheckEditor\InWordCheckEditor\bin\Release\HtmlAgilityPack.xml
+D:\git_repo\InWordCheckEditor\InWordCheckEditor\obj\Release\InWordCheckEditor.csprojAssemblyReference.cache
+D:\git_repo\InWordCheckEditor\InWordCheckEditor\obj\Release\InWordCheckEditor.Properties.Resources.resources
+D:\git_repo\InWordCheckEditor\InWordCheckEditor\obj\Release\InWordCheckEditor.csproj.GenerateResource.cache
+D:\git_repo\InWordCheckEditor\InWordCheckEditor\obj\Release\InWordCheckEditor.csproj.CopyComplete
+D:\git_repo\InWordCheckEditor\InWordCheckEditor\obj\Release\InWordCheckEditor.exe
+D:\git_repo\InWordCheckEditor\InWordCheckEditor\obj\Release\InWordCheckEditor.pdb
+D:\git_repo\InWordCheckEditor\InWordCheckEditor\obj\Release\InWordCheckEditor.Editor.resources
