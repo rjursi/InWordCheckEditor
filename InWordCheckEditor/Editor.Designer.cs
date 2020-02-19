@@ -1,4 +1,6 @@
-﻿namespace InWordCheckEditor
+﻿using System.Drawing;
+
+namespace InWordCheckEditor
 {
     partial class Editor
     {
@@ -29,9 +31,9 @@
         private void InitializeComponent()
         {
             this.btn_initData = new System.Windows.Forms.Button();
-            this.wordChecker = new System.ComponentModel.BackgroundWorker();
             this.initData = new System.ComponentModel.BackgroundWorker();
-            this.TextBox = new InWordCheckEditor.RichTextBoxIme();
+            this.TextBox = new System.Windows.Forms.RichTextBox();
+            this.wordChecker = new System.ComponentModel.BackgroundWorker();
             this.SuspendLayout();
             // 
             // btn_initData
@@ -45,24 +47,27 @@
             this.btn_initData.UseVisualStyleBackColor = true;
             this.btn_initData.Click += new System.EventHandler(this.btn_initData_Click);
             // 
-            // wordChecker
-            // 
-            this.wordChecker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.wordChecker_DoWork);
-            // 
             // initData
             // 
             this.initData.DoWork += new System.ComponentModel.DoWorkEventHandler(this.initData_DoWork);
             // 
             // TextBox
             // 
-            this.TextBox.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.TextBox.Location = new System.Drawing.Point(13, 149);
+            this.TextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TextBox.ImeMode = System.Windows.Forms.ImeMode.Hangul;
+            this.TextBox.Location = new System.Drawing.Point(12, 156);
             this.TextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TextBox.Name = "TextBox";
             this.TextBox.Size = new System.Drawing.Size(432, 258);
             this.TextBox.TabIndex = 2;
             this.TextBox.Text = "";
-            this.TextBox.TextChanged += new System.EventHandler(this.TextBox_TextChanged);
+           
+           
+            this.TextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_KeyDown);
+            // 
+            // wordChecker
+            // 
+            this.wordChecker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.wordChecker_DoWork);
             // 
             // Editor
             // 
@@ -75,15 +80,16 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Editor";
             this.Text = "InWordCheckEditor";
+            this.Load += new System.EventHandler(this.Editor_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.Button btn_initData;
-        private System.ComponentModel.BackgroundWorker wordChecker;
         private System.ComponentModel.BackgroundWorker initData;
-        private RichTextBoxIme TextBox;
+        private System.Windows.Forms.RichTextBox TextBox;
+        private System.ComponentModel.BackgroundWorker wordChecker;
     }
 }
 

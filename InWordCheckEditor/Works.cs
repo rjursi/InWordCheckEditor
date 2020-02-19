@@ -56,50 +56,7 @@ namespace InWordCheckEditor
         }
 
 
-        /*
-        public ValueObject wordCheck(string lineString)
-        {
-
-            List<int> differentWordIndex = new List<int>();
-            List<int> wordLength = new List<int>();
-
-            List<string> lineWordList;
-            List<string> differentWords;
-            
-            ValueObject wordCheckVo;
-
-            wordCheckVo = new ValueObject();
-
-
-            
-            words = ReadVo.getWords();
-            lineWordList = lineString.Split(' ').ToList();
-
-
-            differentWords = lineWordList.Except(words).ToList();
-
-            // differentWords in lineWordList
-
-            for (int i = 0; i < differentWords.Count(); i++)
-            {
-                differentWordIndex.Add(lineString.IndexOf(differentWords[i]));
-                wordLength.Add(differentWords[i].Length);
-
-
-            }
-
-
-            wordCheckVo.setDifferentwordIndex(differentWordIndex);
-            wordCheckVo.setWordLength(wordLength);
-
-
-            return wordCheckVo;
-
-        }
-        
-         */
-
-        //public ValueObject getReadVo() => ReadVo;
+       
 
         public WordInfo getWordInfo() => wordInfo;
     }

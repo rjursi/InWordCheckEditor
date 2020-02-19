@@ -62,9 +62,6 @@
     <Compile Include="Editor.Designer.cs">
       <DependentUpon>Editor.cs</DependentUpon>
     </Compile>
-    <Compile Include="RichTextBoxIme.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="WordInfo.cs" />
     <Compile Include="Works.cs" />
     <Compile Include="Program.cs" />
