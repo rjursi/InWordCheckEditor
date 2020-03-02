@@ -71,7 +71,7 @@ namespace InWordCheckEditor
                     excelFile = new FileInfo(filePath);
                     excel = new ExcelPackage(excelFile);
 
-                    MessageBox.Show("한글 데이터를 가져왔습니다.");
+                    MessageBox.Show("한글 데이터를 가져왔습니다.", "데이터 로드 완료", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     return true;
                 }

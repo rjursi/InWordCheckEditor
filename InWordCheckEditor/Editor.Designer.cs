@@ -46,11 +46,12 @@ namespace InWordCheckEditor
             // TextBox
             // 
             this.TextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.TextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TextBox.ImeMode = System.Windows.Forms.ImeMode.Alpha;
-            this.TextBox.Location = new System.Drawing.Point(12, 36);
+            this.TextBox.Location = new System.Drawing.Point(0, 24);
             this.TextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TextBox.Name = "TextBox";
-            this.TextBox.Size = new System.Drawing.Size(940, 555);
+            this.TextBox.Size = new System.Drawing.Size(484, 437);
             this.TextBox.TabIndex = 2;
             this.TextBox.Text = "";
             this.TextBox.SelectionChanged += new System.EventHandler(this.TextBox_SelectionChanged);
@@ -69,7 +70,7 @@ namespace InWordCheckEditor
             this.menu_editorMain.Location = new System.Drawing.Point(0, 0);
             this.menu_editorMain.Name = "menu_editorMain";
             this.menu_editorMain.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menu_editorMain.Size = new System.Drawing.Size(964, 24);
+            this.menu_editorMain.Size = new System.Drawing.Size(484, 24);
             this.menu_editorMain.TabIndex = 3;
             // 
             // menu_callFile
@@ -121,14 +122,15 @@ namespace InWordCheckEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(964, 601);
+            this.ClientSize = new System.Drawing.Size(484, 461);
             this.Controls.Add(this.TextBox);
             this.Controls.Add(this.menu_editorMain);
             this.ImeMode = System.Windows.Forms.ImeMode.HangulFull;
             this.MainMenuStrip = this.menu_editorMain;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MinimumSize = new System.Drawing.Size(500, 500);
             this.Name = "Editor";
-            this.Text = "InWordCheckEditor";
+            this.Text = "Hangul Level Check Editor";
             this.menu_editorMain.ResumeLayout(false);
             this.menu_editorMain.PerformLayout();
             this.ResumeLayout(false);

@@ -109,33 +109,50 @@ namespace InWordCheckEditor
             this.words = wordDataInfo.getWords();
         }
 
-        private void btn_easyLevel_Click(object sender, EventArgs e)
+
+        private void LevelSelect(int level)
         {
 
-            
-            workbook.selectWorksheet(1);
-            worksheetReader.setLevelWordInfo(workbook);
+            if (workbook != null)
+            {
+                workbook.selectWorksheet(level);
+                worksheetReader.setLevelWordInfo(workbook);
 
-            wordDataInfo = worksheetReader.getWordDataInfo();
-            words = wordDataInfo.getWords();
+                wordDataInfo = worksheetReader.getWordDataInfo();
+                words = wordDataInfo.getWords();
+
+                if (!wordChecker.IsBusy)
+                    wordChecker.RunWorkerAsync();
+            }
+            else
+            {
+                MessageBox.Show("한글 데이터 엑셀 파일이 로드되지 않았습니다.", "데이터 없음", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+
+        private void btn_easyLevel_Click(object sender, EventArgs e)
+        {
+            int level = 1;
+
+            LevelSelect(level);
+            
+            
         }
 
         private void btn_normalLevel_Click(object sender, EventArgs e)
         {
-            workbook.selectWorksheet(2);
-            worksheetReader.setLevelWordInfo(workbook);
+            int level = 2;
 
-            wordDataInfo = worksheetReader.getWordDataInfo();
-            words = wordDataInfo.getWords();
+            LevelSelect(level);
         }
 
         private void btn_hardLevel_Click(object sender, EventArgs e)
         {
-            workbook.selectWorksheet(3);
-            worksheetReader.setLevelWordInfo(workbook);
+            int level = 3;
 
-            wordDataInfo = worksheetReader.getWordDataInfo();
-            words = wordDataInfo.getWords();
+            LevelSelect(level);
+
         }
 
         
@@ -146,6 +163,10 @@ namespace InWordCheckEditor
             {
                 if (!wordChecker.IsBusy)
                     wordChecker.RunWorkerAsync();
+            }
+            else {
+
+                MessageBox.Show("한글 데이터 엑셀 파일이 로드되지 않았습니다.", "데이터 없음", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
