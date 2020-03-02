@@ -30,66 +30,123 @@ namespace InWordCheckEditor
         /// </summary>
         private void InitializeComponent()
         {
-            this.btn_initData = new System.Windows.Forms.Button();
             this.initData = new System.ComponentModel.BackgroundWorker();
             this.TextBox = new System.Windows.Forms.RichTextBox();
             this.wordChecker = new System.ComponentModel.BackgroundWorker();
+            this.menu_editorMain = new System.Windows.Forms.MenuStrip();
+            this.menu_callFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.menu_chooseLevel = new System.Windows.Forms.ToolStripMenuItem();
+            this.btn_easyLevel = new System.Windows.Forms.ToolStripMenuItem();
+            this.btn_normalLevel = new System.Windows.Forms.ToolStripMenuItem();
+            this.btn_hardLevel = new System.Windows.Forms.ToolStripMenuItem();
+            this.btn_useCheck = new System.Windows.Forms.ToolStripMenuItem();
+            this.menu_editorMain.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btn_initData
-            // 
-            this.btn_initData.Location = new System.Drawing.Point(13, 96);
-            this.btn_initData.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btn_initData.Name = "btn_initData";
-            this.btn_initData.Size = new System.Drawing.Size(431, 38);
-            this.btn_initData.TabIndex = 1;
-            this.btn_initData.Text = "엑셀 데이터 초기화";
-            this.btn_initData.UseVisualStyleBackColor = true;
-            this.btn_initData.Click += new System.EventHandler(this.btn_initData_Click);
-            // 
-            // initData
-            // 
-            this.initData.DoWork += new System.ComponentModel.DoWorkEventHandler(this.initData_DoWork);
             // 
             // TextBox
             // 
             this.TextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.TextBox.ImeMode = System.Windows.Forms.ImeMode.Hangul;
-            this.TextBox.Location = new System.Drawing.Point(12, 156);
+            this.TextBox.ImeMode = System.Windows.Forms.ImeMode.Alpha;
+            this.TextBox.Location = new System.Drawing.Point(12, 36);
             this.TextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TextBox.Name = "TextBox";
-            this.TextBox.Size = new System.Drawing.Size(432, 258);
+            this.TextBox.Size = new System.Drawing.Size(940, 555);
             this.TextBox.TabIndex = 2;
             this.TextBox.Text = "";
-           
-           
-            this.TextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBox_KeyDown);
+            this.TextBox.SelectionChanged += new System.EventHandler(this.TextBox_SelectionChanged);
             // 
             // wordChecker
             // 
             this.wordChecker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.wordChecker_DoWork);
             // 
+            // menu_editorMain
+            // 
+            this.menu_editorMain.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menu_editorMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menu_callFile,
+            this.menu_chooseLevel,
+            this.btn_useCheck});
+            this.menu_editorMain.Location = new System.Drawing.Point(0, 0);
+            this.menu_editorMain.Name = "menu_editorMain";
+            this.menu_editorMain.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this.menu_editorMain.Size = new System.Drawing.Size(964, 24);
+            this.menu_editorMain.TabIndex = 3;
+            // 
+            // menu_callFile
+            // 
+            this.menu_callFile.Name = "menu_callFile";
+            this.menu_callFile.Size = new System.Drawing.Size(95, 20);
+            this.menu_callFile.Text = "파일 불러오기";
+            this.menu_callFile.Click += new System.EventHandler(this.menu_callFile_Click);
+            // 
+            // menu_chooseLevel
+            // 
+            this.menu_chooseLevel.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btn_easyLevel,
+            this.btn_normalLevel,
+            this.btn_hardLevel});
+            this.menu_chooseLevel.Name = "menu_chooseLevel";
+            this.menu_chooseLevel.Size = new System.Drawing.Size(71, 20);
+            this.menu_chooseLevel.Text = "등급 선택";
+            // 
+            // btn_easyLevel
+            // 
+            this.btn_easyLevel.Name = "btn_easyLevel";
+            this.btn_easyLevel.Size = new System.Drawing.Size(98, 22);
+            this.btn_easyLevel.Text = "초급";
+            this.btn_easyLevel.Click += new System.EventHandler(this.btn_easyLevel_Click);
+            // 
+            // btn_normalLevel
+            // 
+            this.btn_normalLevel.Name = "btn_normalLevel";
+            this.btn_normalLevel.Size = new System.Drawing.Size(98, 22);
+            this.btn_normalLevel.Text = "중급";
+            this.btn_normalLevel.Click += new System.EventHandler(this.btn_normalLevel_Click);
+            // 
+            // btn_hardLevel
+            // 
+            this.btn_hardLevel.Name = "btn_hardLevel";
+            this.btn_hardLevel.Size = new System.Drawing.Size(98, 22);
+            this.btn_hardLevel.Text = "고급";
+            this.btn_hardLevel.Click += new System.EventHandler(this.btn_hardLevel_Click);
+            // 
+            // btn_useCheck
+            // 
+            this.btn_useCheck.Name = "btn_useCheck";
+            this.btn_useCheck.Size = new System.Drawing.Size(95, 20);
+            this.btn_useCheck.Text = "사용가능 체크";
+            this.btn_useCheck.Click += new System.EventHandler(this.btn_useCheck_Click);
+            // 
             // Editor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(461, 415);
+            this.ClientSize = new System.Drawing.Size(964, 601);
             this.Controls.Add(this.TextBox);
-            this.Controls.Add(this.btn_initData);
+            this.Controls.Add(this.menu_editorMain);
             this.ImeMode = System.Windows.Forms.ImeMode.HangulFull;
+            this.MainMenuStrip = this.menu_editorMain;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Editor";
             this.Text = "InWordCheckEditor";
-            this.Load += new System.EventHandler(this.Editor_Load);
+            this.menu_editorMain.ResumeLayout(false);
+            this.menu_editorMain.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Button btn_initData;
         private System.ComponentModel.BackgroundWorker initData;
         private System.Windows.Forms.RichTextBox TextBox;
         private System.ComponentModel.BackgroundWorker wordChecker;
+        private System.Windows.Forms.MenuStrip menu_editorMain;
+        private System.Windows.Forms.ToolStripMenuItem menu_callFile;
+        private System.Windows.Forms.ToolStripMenuItem menu_chooseLevel;
+        private System.Windows.Forms.ToolStripMenuItem btn_easyLevel;
+        private System.Windows.Forms.ToolStripMenuItem btn_normalLevel;
+        private System.Windows.Forms.ToolStripMenuItem btn_hardLevel;
+        private System.Windows.Forms.ToolStripMenuItem btn_useCheck;
     }
 }
 

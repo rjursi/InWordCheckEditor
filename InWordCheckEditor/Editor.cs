@@ -10,151 +10,65 @@ namespace InWordCheckEditor
     public partial class Editor : Form
     {
 
-        Works works;
-        DataAccessObject dao;
-
+        WorkbookSetting workbook;
+        WorksheetReader worksheetReader;
+        DataInfo wordDataInfo;
         List<string> words;
-        WordInfo wordInfo;
+       
 
-      
+
+
         public Editor()
         {
             InitializeComponent();
-
-            
-            works = new Works();
-
-            
-
-            this.dao = works.getDao();
-            this.wordInfo = works.getWordInfo();
-            words = wordInfo.getWords();
-
-            this.initData.DoWork += new DoWorkEventHandler(initData_DoWork);
-            this.initData.RunWorkerCompleted += new RunWorkerCompletedEventHandler(initData_RunWorkerCompleted);
-
-            this.btn_initData.Click += new EventHandler(btn_initData_Click);
-
-            
-
               
         }
 
 
-        public void btn_initData_Click(object sender, EventArgs e)
-        {
-
-
-            if (!this.initData.IsBusy)
-            {
-
-                this.initData.RunWorkerAsync();
-                this.btn_initData.Text = "엑셀 데이터 초기화중...";
-                this.btn_initData.Enabled = false;
-            }
-
-
-        }
-
-     
-        private void initData_DoWork(object sender, DoWorkEventArgs e)
-        {
-            works.initWordData();
-
-        }
-
-        private void initData_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            MessageBox.Show("엑셀 데이터 초기화 작업이 완료되었습니다.", "엑셀 데이터 초기화 완료", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            this.btn_initData.Text = "엑셀 데이터 초기화";
-            this.btn_initData.Enabled = true;
-        }
-
-        private void TextBox_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode == Keys.Enter || e.KeyCode == Keys.Up || e.KeyCode == Keys.Down || e.KeyCode == Keys.Left || e.KeyCode == Keys.Right)
-            {
-                
-                if (!wordChecker.IsBusy)
-                    wordChecker.RunWorkerAsync();
-
-            }
-            else
-            {
-                TextBox.SelectionColor = Color.Black;
-            }
-
-            
-        }
-
-        private void Editor_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void wordChecker_DoWork(object sender, DoWorkEventArgs e)
         {
 
             Action findWork = () =>
             {
-
-                int index = 0;
-                string searchWord = "";
-
-                int lastIndex = 0;
-                int found = -1;
-                int cursorIndexTemp = TextBox.SelectionStart;
-                int newLineLastIndex = 0;
-
-
-                newLineLastIndex = TextBox.Text.LastIndexOf("\\n");
-                if(newLineLastIndex == -1)
-                {
-                    newLineLastIndex = 0;
-                }
-                else
-                {
-                    index = cursorIndexTemp - newLineLastIndex;
-                }
-
                 
+                int index = 0;
+                int cursorTemp = TextBox.SelectionStart;
+                int finded = 0;
 
-                lastIndex = cursorIndexTemp;
 
-                TextBox.Select(index, lastIndex);
+                TextBox.SelectAll();
                 TextBox.SelectionColor = Color.Red;
+                TextBox.DeselectAll();
 
-                for (int i = 0; i < words.Count; i++)
+               
+                for(int cnt = 0; cnt < this.wordDataInfo.getWordCnt(); cnt++)
                 {
-
-                    searchWord = words[i];
-                    
-
-                    while (index < lastIndex)
+                    while(index < TextBox.Text.LastIndexOf(words[cnt]))
                     {
-                        
-                        found = TextBox.Find(searchWord, index, lastIndex, RichTextBoxFinds.None);
-
-                        if(found == -1)
-                        {
+                        finded = TextBox.Find(words[cnt], index, TextBox.TextLength, RichTextBoxFinds.None);
+                        if (finded == -1)
+                        {   
                             break;
                         }
-                        TextBox.SelectionColor = Color.Black;                        
-                        index = TextBox.Text.IndexOf(searchWord, index) + 1;
+
+                        TextBox.SelectionColor = Color.Black;
+                        
+                        index = TextBox.Text.IndexOf(words[cnt], index) + 1;
+                        
                     }
 
-                    index = newLineLastIndex;
-                    // Search point Init
+                    index = 0;
                 }
-
                 
-                TextBox.SelectionStart = cursorIndexTemp;
-                
+                TextBox.SelectionStart = cursorTemp;
                 TextBox.DeselectAll();
                 TextBox.SelectionColor = Color.Black;
-                
-                
+
+
+                // Solution 1. Use .Find and SelectionColor 
+
+
             };
 
 
@@ -163,7 +77,85 @@ namespace InWordCheckEditor
 
         }
 
+       
 
+        
+        private void menu_callFile_Click(object sender, EventArgs e)
+        {
+
+            bool isCalled;
+
+            //MessageBox.Show(strRtf);
+            workbook = new WorkbookSetting();
+            
+            isCalled = workbook.selectExcelFile();
+
+            if (!isCalled)
+            {
+                return;
+            }
+
+            workbook.selectWorksheet();
+            // Default easy Level Select
+
+
+            worksheetReader = new WorksheetReader(workbook);
+
+            wordDataInfo = worksheetReader.getWordDataInfo();
+
+            // Default get word easy level
+
+
+            this.words = wordDataInfo.getWords();
+        }
+
+        private void btn_easyLevel_Click(object sender, EventArgs e)
+        {
+
+            
+            workbook.selectWorksheet(1);
+            worksheetReader.setLevelWordInfo(workbook);
+
+            wordDataInfo = worksheetReader.getWordDataInfo();
+            words = wordDataInfo.getWords();
+        }
+
+        private void btn_normalLevel_Click(object sender, EventArgs e)
+        {
+            workbook.selectWorksheet(2);
+            worksheetReader.setLevelWordInfo(workbook);
+
+            wordDataInfo = worksheetReader.getWordDataInfo();
+            words = wordDataInfo.getWords();
+        }
+
+        private void btn_hardLevel_Click(object sender, EventArgs e)
+        {
+            workbook.selectWorksheet(3);
+            worksheetReader.setLevelWordInfo(workbook);
+
+            wordDataInfo = worksheetReader.getWordDataInfo();
+            words = wordDataInfo.getWords();
+        }
+
+        
+
+        private void btn_useCheck_Click(object sender, EventArgs e)
+        {
+            if (workbook != null)
+            {
+                if (!wordChecker.IsBusy)
+                    wordChecker.RunWorkerAsync();
+            }
+        }
+
+        private void TextBox_SelectionChanged(object sender, EventArgs e)
+        {
+            if (!wordChecker.IsBusy) { 
+                
+                TextBox.SelectionColor = Color.Black;
+            }
+        }
     }
 
 }
