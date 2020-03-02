@@ -1,0 +1,12 @@
+D:\git_repo\InWordCheckEditor\HangulDataMaker\bin\Debug\HangulDataMaker.exe.config
+D:\git_repo\InWordCheckEditor\HangulDataMaker\bin\Debug\HangulDataMaker.exe
+D:\git_repo\InWordCheckEditor\HangulDataMaker\bin\Debug\HangulDataMaker.pdb
+D:\git_repo\InWordCheckEditor\HangulDataMaker\bin\Debug\EPPlus.dll
+D:\git_repo\InWordCheckEditor\HangulDataMaker\bin\Debug\HtmlAgilityPack.dll
+D:\git_repo\InWordCheckEditor\HangulDataMaker\bin\Debug\EPPlus.xml
+D:\git_repo\InWordCheckEditor\HangulDataMaker\bin\Debug\HtmlAgilityPack.pdb
+D:\git_repo\InWordCheckEditor\HangulDataMaker\bin\Debug\HtmlAgilityPack.xml
+D:\git_repo\InWordCheckEditor\HangulDataMaker\obj\Debug\HangulDataMaker.csprojAssemblyReference.cache
+D:\git_repo\InWordCheckEditor\HangulDataMaker\obj\Debug\HangulDataMaker.csproj.CopyComplete
+D:\git_repo\InWordCheckEditor\HangulDataMaker\obj\Debug\HangulDataMaker.exe
+D:\git_repo\InWordCheckEditor\HangulDataMaker\obj\Debug\HangulDataMaker.pdb
