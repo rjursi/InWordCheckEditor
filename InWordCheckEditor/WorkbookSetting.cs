@@ -26,7 +26,7 @@ namespace InWordCheckEditor
         public void selectWorksheet(int level = 1)
         {
             worksheet = excel.Workbook.Worksheets[level];
-
+            // 엑셀 시트 설정
 
             switch (level)
             {
@@ -47,12 +47,10 @@ namespace InWordCheckEditor
 
         }
 
-
         public bool selectExcelFile()
         {
 
             string filePath;
-
 
             using (OpenFileDialog fileDialog = new OpenFileDialog())
             {
@@ -64,7 +62,6 @@ namespace InWordCheckEditor
 
                 if (fileDialog.ShowDialog() == DialogResult.OK)
                 {
-
 
                     filePath = fileDialog.FileName;
 
@@ -79,5 +76,8 @@ namespace InWordCheckEditor
                 return false;
             }
         }
+
+
+
     }
 }

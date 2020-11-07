@@ -19,7 +19,7 @@ namespace InWordCheckEditor
 
             this.setLevelWordInfo(workbook);
             
-            // Select Default Level to Easy level
+           
         }
 
         
@@ -36,7 +36,7 @@ namespace InWordCheckEditor
                 wordTemp = worksheet.Cells["A" + (index + 2)].Value.ToString();
 
                 words.Add(wordTemp);
-            }
+            } // 단어들을 리스트에 넣는 과정
 
             wordDataInfo.setWordCnt(wordCnt);
             wordDataInfo.setWords(words);

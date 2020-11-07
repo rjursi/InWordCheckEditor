@@ -24,8 +24,6 @@ namespace HangulDataMaker // 프로젝트 경로를 뜻함
         private HtmlWeb web;
         private HtmlDocument document;
 
-      
-
         public int getWordCnt() => cntInOneCol;
         public List <string> getWords() => words;
         //public string getTitle() => columnTitle;
@@ -34,8 +32,6 @@ namespace HangulDataMaker // 프로젝트 경로를 뜻함
         {
             this.words.Clear();
         }
-
-
         private void setWordCnt(int colNum)
         {
             cntInOneCol = document.DocumentNode.SelectNodes("//*[@id=\"mw-content-text\"]/div/table[2]/tbody/tr/td[" + colNum + "]/dl/dd").Count;
@@ -80,9 +76,6 @@ namespace HangulDataMaker // 프로젝트 경로를 뜻함
 
             columnTitle = "";
             cntInOneCol = 0;
-
-
-            
 
         }
     }

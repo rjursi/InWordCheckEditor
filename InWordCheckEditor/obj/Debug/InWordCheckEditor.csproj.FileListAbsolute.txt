@@ -13,3 +13,4 @@ D:\git_repo\InWordCheckEditor\InWordCheckEditor\bin\Debug\HtmlAgilityPack.xml
 D:\git_repo\InWordCheckEditor\InWordCheckEditor\obj\Debug\InWordCheckEditor.csproj.CopyComplete
 D:\git_repo\InWordCheckEditor\InWordCheckEditor\obj\Debug\InWordCheckEditor.Editor.resources
 D:\git_repo\InWordCheckEditor\InWordCheckEditor\obj\Debug\InWordCheckEditor.csprojAssemblyReference.cache
+D:\git_repo\InWordCheckEditor\InWordCheckEditor\obj\Debug\InWordCheckEditor.csproj.CoreCompileInputs.cache

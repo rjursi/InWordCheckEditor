@@ -16,15 +16,11 @@ namespace InWordCheckEditor
         List<string> words;
        
 
-
-
         public Editor()
         {
             InitializeComponent();
               
         }
-
-
 
         private void wordChecker_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -71,15 +67,10 @@ namespace InWordCheckEditor
 
             };
 
-
             this.TextBox.Invoke(findWork);
-            
-
+            Console.WriteLine("test");
         }
 
-       
-
-        
         private void menu_callFile_Click(object sender, EventArgs e)
         {
 
@@ -96,11 +87,10 @@ namespace InWordCheckEditor
             }
 
             workbook.selectWorksheet();
-            // Default easy Level Select
+            // 기본적으로 쉬운 난이도로 설정이 됨
 
 
             worksheetReader = new WorksheetReader(workbook);
-
             wordDataInfo = worksheetReader.getWordDataInfo();
 
             // Default get word easy level
@@ -137,7 +127,6 @@ namespace InWordCheckEditor
 
             LevelSelect(level);
             
-            
         }
 
         private void btn_normalLevel_Click(object sender, EventArgs e)
@@ -155,7 +144,6 @@ namespace InWordCheckEditor
 
         }
 
-        
 
         private void btn_useCheck_Click(object sender, EventArgs e)
         {
