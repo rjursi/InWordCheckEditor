@@ -10,18 +10,28 @@ namespace InWordCheckEditor
         private List<string> words;
         private int wordCnt;
 
-        public List<string> getWords() => words;
-        public int getWordCnt() => wordCnt;
-
-
-        public void setWords(List<string> words)
+        public List<string> Words
         {
-            this.words = words;
+            set
+            {
+                this.words = value;
+            }
+            get
+            {
+                return this.words;
+            }
         }
-
-        public void setWordCnt(int wordCnt)
+        
+        public int WordCnt
         {
-            this.wordCnt = wordCnt;
+            set
+            {
+                this.wordCnt = value;
+            }
+            get
+            {
+                return this.wordCnt;
+            }
         }
     }
 }

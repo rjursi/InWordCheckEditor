@@ -10,7 +10,7 @@ namespace InWordCheckEditor
     public partial class Editor : Form
     {
 
-        WorkbookSetting workbook;
+        WorkbookSetting workbookSetting;
         WorksheetReader worksheetReader;
         DataInfo wordDataInfo;
         List<string> words;
@@ -38,7 +38,7 @@ namespace InWordCheckEditor
                 TextBox.DeselectAll();
 
                
-                for(int cnt = 0; cnt < this.wordDataInfo.getWordCnt(); cnt++)
+                for(int cnt = 0; cnt < this.wordDataInfo.WordCnt; cnt++)
                 {
                     while(index < TextBox.Text.LastIndexOf(words[cnt]))
                     {
@@ -77,39 +77,37 @@ namespace InWordCheckEditor
             bool isCalled;
 
             //MessageBox.Show(strRtf);
-            workbook = new WorkbookSetting();
+            workbookSetting = new WorkbookSetting();
             
-            isCalled = workbook.selectExcelFile();
+            isCalled = workbookSetting.OpenExcelFile();
 
             if (!isCalled)
             {
                 return;
             }
 
-            workbook.selectWorksheet();
-            // 기본적으로 쉬운 난이도로 설정이 됨
+        
 
-
-            worksheetReader = new WorksheetReader(workbook);
-            wordDataInfo = worksheetReader.getWordDataInfo();
+            worksheetReader = new WorksheetReader(workbookSetting);
+            wordDataInfo = worksheetReader.WordDataInfo;
 
             // Default get word easy level
 
 
-            this.words = wordDataInfo.getWords();
+            this.words = wordDataInfo.Words;
         }
 
 
         private void LevelSelect(int level)
         {
 
-            if (workbook != null)
+            if (workbookSetting != null)
             {
-                workbook.selectWorksheet(level);
-                worksheetReader.setLevelWordInfo(workbook);
+                workbookSetting.SelectWorksheet(level);
+                worksheetReader.SetLevelWordInfo(workbookSetting);
 
-                wordDataInfo = worksheetReader.getWordDataInfo();
-                words = wordDataInfo.getWords();
+                wordDataInfo = worksheetReader.WordDataInfo;
+                words = wordDataInfo.Words;
 
                 if (!wordChecker.IsBusy)
                     wordChecker.RunWorkerAsync();
@@ -147,7 +145,7 @@ namespace InWordCheckEditor
 
         private void btn_useCheck_Click(object sender, EventArgs e)
         {
-            if (workbook != null)
+            if (workbookSetting != null)
             {
                 if (!wordChecker.IsBusy)
                     wordChecker.RunWorkerAsync();

@@ -1,10 +1,7 @@
-﻿using OfficeOpenXml;
+﻿
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+using Excel = Microsoft.Office.Interop.Excel;
 namespace InWordCheckEditor
 {
     class WorksheetReader
@@ -12,34 +9,51 @@ namespace InWordCheckEditor
 
         private DataInfo wordDataInfo;
 
-        public DataInfo getWordDataInfo() => wordDataInfo;
-        public WorksheetReader(WorkbookSetting workbook)
+        public DataInfo WordDataInfo
+        {
+            get
+            {
+                return this.wordDataInfo;
+            }
+        }
+        public WorksheetReader(WorkbookSetting workbookSetting)
         {
             wordDataInfo = new DataInfo();
 
-            this.setLevelWordInfo(workbook);
+            this.SetLevelWordInfo(workbookSetting);
             
            
         }
 
         
 
-        public void setLevelWordInfo(WorkbookSetting workbook)
+        public void SetLevelWordInfo(WorkbookSetting workbookSetting)
         {
-            string wordTemp;
+            string wordTemp = "";
             List<string> words = new List<string>();
-            ExcelWorksheet worksheet = workbook.getWorksheet();
-            int wordCnt = Int32.Parse(worksheet.Cells["A1"].Value.ToString());
+            Excel.Worksheet excelWorksheet = workbookSetting.ExcelWorksheet;
+            int wordCnt = excelWorksheet.UsedRange.Rows.Count;
             
             for(int index = 1; index <= wordCnt; index++)
             {
-                wordTemp = worksheet.Cells["A" + (index + 2)].Value.ToString();
-
-                words.Add(wordTemp);
+                try
+                {
+                    wordTemp = excelWorksheet.Cells[index, 1].Value.ToString();
+                }
+                catch (Microsoft.CSharp.RuntimeBinder.RuntimeBinderException) // 공백일 경우 발생
+                {
+                    continue;
+                }
+                finally
+                {
+                    words.Add(wordTemp);
+                }
+               
+                
             } // 단어들을 리스트에 넣는 과정
 
-            wordDataInfo.setWordCnt(wordCnt);
-            wordDataInfo.setWords(words);
+            wordDataInfo.WordCnt = wordCnt;
+            wordDataInfo.Words = words;
             
 
         }

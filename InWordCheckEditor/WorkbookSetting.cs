@@ -1,5 +1,5 @@
 ﻿using System;
-using OfficeOpenXml;
+using Excel = Microsoft.Office.Interop.Excel;
 using System.IO; // For using FileInfo
 using System.Windows.Forms;
 
@@ -10,23 +10,27 @@ namespace InWordCheckEditor
         
 
 
-        private ExcelPackage excel;
-        private FileInfo excelFile;
-        private ExcelWorksheet worksheet;
+        private Excel.Application excelApp;
+        private Excel.Workbook excelWorkbook;
+        private Excel.Worksheet excelWorksheet;
         
        
-
-        public FileInfo getExcelFile() => excelFile;
-
-        public ExcelPackage getExcel() => excel;
-
-        public ExcelWorksheet getWorksheet() => worksheet;
-
-
-        public void selectWorksheet(int level = 1)
+        public Excel.Worksheet ExcelWorksheet
         {
-            worksheet = excel.Workbook.Worksheets[level];
-            // 엑셀 시트 설정
+            set
+            {
+                this.excelWorksheet = value;
+            }
+            get
+            {
+                return this.excelWorksheet;
+            }
+        }
+
+
+        public void SelectWorksheet(int level = 1)
+        {
+            excelWorksheet = this.excelWorkbook.Worksheets.get_Item(level);   // 엑셀 시트 설정
 
             switch (level)
             {
@@ -43,33 +47,27 @@ namespace InWordCheckEditor
 
             }
 
-
-
         }
 
-        public bool selectExcelFile()
+        public bool OpenExcelFile()
         {
 
-            string filePath;
-
-            using (OpenFileDialog fileDialog = new OpenFileDialog())
+            using (OpenFileDialog OpenFileDialog = new OpenFileDialog())
             {
-                fileDialog.InitialDirectory = AppDomain.CurrentDomain.BaseDirectory + "excelData\\";
-                fileDialog.Filter = "Excel files (*.xlsx)|*.xlsx";
-                fileDialog.FilterIndex = 1;
-                fileDialog.RestoreDirectory = true;
 
-
-                if (fileDialog.ShowDialog() == DialogResult.OK)
+                OpenFileDialog.Filter = "Excel files (*.xlsx)|*.xlsx";
+                
+                if (OpenFileDialog.ShowDialog() == DialogResult.OK)
                 {
 
-                    filePath = fileDialog.FileName;
+                    string filepath = OpenFileDialog.FileName;
 
-                    excelFile = new FileInfo(filePath);
-                    excel = new ExcelPackage(excelFile);
+                    this.excelApp = new Excel.Application();
+                    this.excelWorkbook = excelApp.Workbooks.Open(filepath);
 
                     MessageBox.Show("한글 데이터를 가져왔습니다.", "데이터 로드 완료", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                    this.SelectWorksheet();
                     return true;
                 }
 
